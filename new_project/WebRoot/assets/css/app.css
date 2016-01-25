@@ -1,0 +1,10 @@
+/* Write your styles */
+.am-align-left{
+	
+}
+.am-align-right{
+    margin-left: auto;
+	padding-right: 4%;
+    margin-top: 1.5%;
+    width: 30%;
+}
