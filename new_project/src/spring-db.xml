@@ -57,6 +57,8 @@
 		
 		<property name="mappingLocations">
 			<list>
+				<value>classpath:com/model/relationship/RoleAuthorityR.hbm.xml</value>
+				<value>classpath:com/model/relationship/RoleMenuR.hbm.xml</value>
 				<value>classpath:com/model/security/authority/AuthorityInfo.hbm.xml</value>
 				<value>classpath:com/model/security/menu/MenuInfo.hbm.xml</value>
 				<value>classpath:com/model/security/role/RoleInfo.hbm.xml</value>
