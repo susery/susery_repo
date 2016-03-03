@@ -47,7 +47,7 @@
   <!-- sidebar start -->
   <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
-    
+ <%--    
       <ul id="menu_ul"  class="am-list admin-sidebar-list">
       </ul>
       
@@ -63,7 +63,7 @@
        var child_tag = '<li class="admin-parent">'+
            '<a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>'+
            '<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">'+
-           '<li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>'+
+           '<li><a href=""><span></span></a></li>'+
            +'</ul>'+
          '</li>';
          
@@ -77,7 +77,31 @@
        //$.tmpl(传入定义好的显示模板，传入json格式的数据)
        $.tmpl( "menu_tag", menuList ).appendTo( "#menu_ul" );
       </script>
+--%>
+	
+	<ul id="menu_ul"  class="am-list admin-sidebar-list">
+		
+		<script id="menu-tmpl" type="text/x-jquery-tmpl">
+		{{each(i,menu)menuList}}
+			{{if (menu.childMenuList==null ||menu.childMenuList =="")&& menu.parentMenuId==menu.menuId}}}
+				<li id="{{= menu.menuId}}"><a href="{{= menu.menuUrl}}"><span></span>{{= menu.menuName}}</a></li>
+			{{/if}}
 
+			{{if (menu.childMenuList!=null ||menu.childMenuList !="")&& menu.parentMenuId!=menu.menuId}}}
+				<li class="admin-parent">
+          			<a class="am-cf" data-am-collapse="">
+		  			<span class="am-icon-file"></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          			<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+            			<li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
+          			</ul>
+        		</li>
+			{{/if}}
+		{{/each}}
+		</script>	
+      </ul>
+	
+
+	
       <div class="am-panel am-panel-default admin-sidebar-panel">
         <div class="am-panel-bd">
           <p><span class="am-icon-bookmark"></span> 公告</p>
@@ -104,7 +128,27 @@
 
 
 
-
+	<script >
+	/*
+　　	var menuList = [
+                    {menuId:"0001",menuName:"用户管理",menuCode:"user0001",menuUrl:"#",menuLevel:"1",parentMenuId:"0001",childMenuList:[{menuId:"0004",menuName:"子管理1",menuCode:"user0001",menuUrl:"#",menuLevel:"1",parentMenuId:"0001"},{menuId:"0005",menuName:"子管理2",menuCode:"user0001",menuUrl:"#",menuLevel:"1",parentMenuId:"0001"}]},
+                    {menuId:"0002",menuName:"角色管理",menuCode:"role0002",menuUrl:"#",menuLevel:"1",parentMenuId:"0002",childMenuList:[]},
+                    {menuId:"0003",menuName:"菜单管理",menuCode:"menu0003",menuUrl:"#",menuLevel:"1",parentMenuId:"0003",childMenuList:[]}
+	];
+	*/
+　　	var menu_new = {"menus":[
+  	                       {"menuId":"0001","menuName":"用户管理","menuCode":"user0001","menuUrl":"#","menuLevel":"1","parentMenuId":"0001","childMenuList":[{menuId:"0004",menuName:"子管理1",menuCode:"user0001",menuUrl:"#",menuLevel:"1",parentMenuId:"0001"},{menuId:"0005",menuName:"子管理2",menuCode:"user0001",menuUrl:"#",menuLevel:"1",parentMenuId:"0001"}]},
+  	                     {"menuId":"0002","menuName:"角色管理","menuCode":"role0002","menuUrl":"#","menuLevel":"1","parentMenuId":"0002","childMenuList":[]},
+  	                     {"menuId":"0003","menuName":"菜单管理","menuCode":"menu0003","menuUrl":"#","menuLevel":"1","parentMenuId":"0003","childMenuList":[]}
+  	 	]};
+　　	var s = menu_new.parseJSON();
+　　	alert(s);
+　　	/*
+　　	$(function(){
+　　		$("#menu-tmpl").tmpl(menuList).appendTo("#menu_ul");
+　　	});
+　　*/
+	</script>
 
 
 
