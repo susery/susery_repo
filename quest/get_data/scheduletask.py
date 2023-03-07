@@ -6,7 +6,7 @@ import api
 if __name__ == '__main__':
 
 
-    scheduler = BackgroundScheduler()
+    scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
     scheduler.add_job(api.daily_today, "cron", hour =18 ,minute =30)
 
     scheduler.start()
