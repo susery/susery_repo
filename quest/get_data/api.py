@@ -127,8 +127,6 @@ def daily(start_date,end_date):
     conn = datasource.get_ds()
     cu = conn.cursor()
     cu.execute("SELECT ts_code FROM stock_basic")
-    # start_date = '20180101'
-    # end_date = '20230228'
     fields=[
             "ts_code",
             "trade_date",
