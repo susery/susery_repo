@@ -167,7 +167,7 @@ def  daily_today():
     conn = datasource.get_ds()
     cu = conn.cursor()
     cu.execute("SELECT ts_code FROM stock_basic")
-    # trade_date = '20230228'
+    # trade_date = '20230307'
     trade_date = time.strftime("%Y%m%d")
     fields=[
             "ts_code",
